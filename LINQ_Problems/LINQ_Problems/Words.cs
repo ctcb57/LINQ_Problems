@@ -7,25 +7,42 @@ namespace LINQ_Problems
 {
     class Words
     {
-        public void FilterTh()
+
+        public List<string> FilterTh(List<string> feederList)
         {
-            List<string> words = new List<string>() { "the", "bike", "this", "it", "tenth", "mathematics" };
-            var wordsWithTh = words.Where(a => a.Contains("th"));
-            foreach(var word in wordsWithTh)
+            var filteredWords = feederList.Where(a => a.Contains("th")).ToList();
+            foreach(var word in filteredWords)
             {
                 Console.WriteLine(word);
             }
+            return filteredWords;
         }
 
-        public void RemoveDuplicates()
+        public List<string> RemoveDuplicateStringFromList(List<string> feederList)
         {
-            List<string> names = new List<string>() { "Mike", "Brad", "Nevin", "Ian", "Mike" };
-            var noDuplicateNames = names.Distinct();
-            foreach(var name in noDuplicateNames)
+            var noDuplicateList = feederList.Distinct().ToList();
+            foreach(var word in noDuplicateList)
             {
-                Console.WriteLine(name);
+                Console.WriteLine(word);
             }
-            Console.ReadLine();
+            return noDuplicateList;
         }
+
+
+        public double ClassGradeAverage(List<string> feederList)
+        {
+            var listTwo = new List<double>();
+            double runningAverage = 0;
+            for(int i = 0; i < feederList.Count; i++)
+            {
+                var numbers = feederList[i].Split(",").Select(double.Parse).ToList();
+                listTwo = numbers.OrderByDescending(g => g).Take(numbers.Count() - 1).ToList();
+                var listTwoNumbers = listTwo.Average();
+                runningAverage += listTwoNumbers;
+            }
+            double finalAverage = runningAverage / feederList.Count;
+            return finalAverage;
+        }
+
     }
 }

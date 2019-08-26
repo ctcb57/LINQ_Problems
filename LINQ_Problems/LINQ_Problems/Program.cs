@@ -6,6 +6,9 @@ namespace LINQ_Problems
     {
         static void Main(string[] args)
         {
+            Words test = new Words();
+            test.RemoveDuplicates();
+
 
         }
     }

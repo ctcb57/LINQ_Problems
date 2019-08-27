@@ -18,6 +18,7 @@ namespace LINQ_Problems
             "73,88,83,99,64",
             "98,100,66,74,55"};
             test.ClassGradeAverage(testList3);
+            test.AlphabeticallyOrderString("Terrill");
 
         }
     }

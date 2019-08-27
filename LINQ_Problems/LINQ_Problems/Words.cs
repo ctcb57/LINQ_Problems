@@ -44,5 +44,25 @@ namespace LINQ_Problems
             return finalAverage;
         }
 
+        public void AlphabeticallyOrderString(string feederString)
+        {
+            var holderList = new List<string>();
+            string holder = null;
+            var newWord = feederString.ToUpper();
+            var frequencyString = from f in newWord
+                                  group f by f into letterfrequency
+                                  orderby letterfrequency.Key
+                                  select new
+                                  {
+                                      Letter = letterfrequency.Key,
+                                      Frequency = letterfrequency.Count()
+                                  };
+            foreach(var x in frequencyString)
+            {
+                holderList.Add($"{x.Letter}{x.Frequency}");
+            }
+            var holder2.Concat(holderList);
+        }
+
     }
 }

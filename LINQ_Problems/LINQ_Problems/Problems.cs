@@ -46,8 +46,7 @@ namespace LINQ_Problems
 
         public void AlphabeticallyOrderString(string feederString)
         {
-            var holderList = new List<string>();
-            string holder = null;
+            StringBuilder holder = new StringBuilder();
             var newWord = feederString.ToUpper();
             var frequencyString = from f in newWord
                                   group f by f into letterfrequency
@@ -59,9 +58,10 @@ namespace LINQ_Problems
                                   };
             foreach(var x in frequencyString)
             {
-                holderList.Add($"{x.Letter}{x.Frequency}");
+                holder.Append($"{x.Letter}{x.Frequency}");
             }
-            var holder2.Concat(holderList);
+            Console.WriteLine(holder);
+            Console.ReadLine();
         }
 
     }
